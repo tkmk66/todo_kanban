@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>todo_kanban</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <link rel="stylesheet" href="css/styles.css"></link>
+</head>
+
+<body>
+  <section class="section" id="board">
+    <div class="container">
+      <h1>Task Kanban</h1>
+      <input type="text" v-model="newTaskName" placeholder="タスク名" />
+      <select v-model="newTaskAssignee">
+        <option value="john">john</option>
+        <option value="tarou">tarou</option>
+        <option value="yumi">yumi</option>
+        <option value="oliver">oliver</option>
+        <option value="jack">jack</option>
+      </select>
+      <input type="number" v-model="newTaskMandays" />
+      <button @click="addTask">追加</button>
+      <hr>
+      <div class=columns>
+        <div class="column status-1">
+          <div class="tags has-addons">
+            <span class="tag">未対応</span>
+            <span class="tag is-dark">{{ tasksOpen.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <task-card :task="task" v-for="task in tasksOpen" :key="task.name"></task-card>
+          </transition-group>
+        </div>
+        <div class="column status-2">
+          <div class="tags has-addons">
+            <span class="tag">処理中</span>
+            <span class="tag is-dark">{{ tasksDoing.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <task-card :task="task" v-for="task in tasksDoing" :key="task.name"></task-card>
+          </transition-group>
+        </div>
+        <div class="column status-3">
+          <div class="tags has-addons">
+            <span class="tag">完了</span>
+            <span class="tag is-dark">{{ tasksClosed.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <task-card :task="task" v-for="task in tasksClosed" :key="task.name"></task-card>
+          </transition-group>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://unpkg.com/vue@2.5.2/dist/vue.js "></script>
+  <script src="js/app.js "></script>
+</body>
+
+</html>

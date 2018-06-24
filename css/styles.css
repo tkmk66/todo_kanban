@@ -1,0 +1,32 @@
+body {
+  background-color: lightgray;
+  height: -webkit-fill-available;
+}
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 15px;
+}
+.status-1 {
+  background-color: #3f7db1;
+}
+.status-2 {
+  background-color: #cf762c;
+}
+.status-3 {
+  background-color: #51a740;
+}
+.card {
+  margin-bottom: 5px;
+}
+.card-footer-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.8s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
